@@ -13,16 +13,4 @@ const ContactSchema = new mongoose.Schema({
 
 const ContactModel = mongoose.model("contact", ContactSchema)
 
-function add(name, email) {
-    let contact = { name, email }
-    return ContactModel.create(contact)
-}
-
-function get() {
-    return ContactModel.find()
-}
-
-module.exports = {
-    add,
-    get
-}
+module.exports = ContactModel
