@@ -1,13 +1,25 @@
-const contacts = []
+const mongoose = require("mongoose")
+
+const ContactSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    }
+})
+
+const ContactModel = mongoose.model("contact", ContactSchema)
 
 function add(name, email) {
     let contact = { name, email }
-    contacts.push(contact)
-    return contact
+    return ContactModel.create(contact)
 }
 
 function get() {
-    return contacts
+    return ContactModel.find()
 }
 
 module.exports = {

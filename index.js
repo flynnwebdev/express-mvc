@@ -2,8 +2,16 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const handlebars = require("express-handlebars")
 const routes = require("./routes")
+const mongoose = require("mongoose")
 
 const port = 4000
+
+// Connect to MongoDB
+mongoose.connect("mongodb://localhost/contact_app", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+mongoose.connection.on("error", error => console.log(error))
 
 const app = express()
 
